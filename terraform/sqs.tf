@@ -68,7 +68,7 @@ resource "aws_cloudwatch_log_group" "lambda-log-group" {
 resource "aws_lambda_function" "lambda-in-scala" {
   function_name = "${var.lambda-in-scala}"
   role          = "${aws_iam_role.iam-for-lambda-in-scala.arn}"
-  handler       = "com.ru.waka::hello"
+  handler       = "com.ru.waka.Hello::hello"
   filename = ""
 
   runtime = "java8"
