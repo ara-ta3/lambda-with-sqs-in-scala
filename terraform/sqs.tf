@@ -12,7 +12,7 @@ resource "aws_iam_role" "iam-for-lambda-in-scala" {
       "Sid": "",
       "Effect": "Allow",
       "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "Service": "lambda.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
     }
@@ -69,7 +69,7 @@ resource "aws_lambda_function" "lambda-in-scala" {
   function_name = "${var.lambda-in-scala}"
   role          = "${aws_iam_role.iam-for-lambda-in-scala.arn}"
   handler       = "com.ru.waka.Hello::hello"
-  filename = ""
+  filename      = "../target/scala-2.12/lambda-with-sqs-in-scala-assembly-0.1-SNAPSHOT.jar"
 
   runtime = "java8"
 }
